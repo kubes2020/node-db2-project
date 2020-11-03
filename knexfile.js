@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './data/cars.db3' //change path to match data location from root 
+      filename: './data/car-dealer.db3' //change path to match data location from root 
     },
     useNullAsDefault: true, //needed only for SQLite
     migrations: {
