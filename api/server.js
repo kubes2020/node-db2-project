@@ -15,7 +15,31 @@ server.get('/api/cars', (req, res)=>{
     .catch(error => {
         res.status(500).json({message: error.message })
     })
-    // res.send('This endpoint is working!!!')
+})
+
+server.get('/api/cars/:id', (req, res) => {
+    db('cars').where({id:id})
+    .then(car => {
+        res.status(200).json(car)
+    })
+    .catch(error => {
+        res.status(500).json({message: error.message })
+    })
+})
+
+
+server.post('/api/cars', (req, res) => {
+    db('cars').insert(req.body)
+    .then(ids => {
+        console.log("ids", ids)
+        db('cars').where({id: ids[0] })
+        })
+        .then(newCar => {
+            res.status(201).json(newCar)
+        })
+    .catch(error => {
+        res.status(500).json({ message: error.message })
+    })
 })
 
 

@@ -10,6 +10,9 @@ module.exports = {
     useNullAsDefault: true, //needed only for SQLite
     migrations: {
       directory: './data/migrations' //from root, this tells 'knex migrate:make <tableName>' where to save it
+    },
+    seeds: {
+      directory: './data/seeds'
     }
   },
 
