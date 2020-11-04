@@ -53,4 +53,15 @@ router.put('/:id', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+    const {id} = req.params
+    db('cars').where({ id: id }).del()
+    .then(() => {
+        res.status(200).json({message: "car deleted successfully"})
+    })
+    .catch(error => {
+        res.status(500).json({ message: error.message })
+    })
+})
+
 module.exports = router
