@@ -37,4 +37,20 @@ router.post('/', (req, res) => {
     })
 })
 
+router.put('/:id', (req, res) => {
+    const {id} = req.params
+    const updatedCar = req.body
+    db('cars').where({id:id}).update(updatedCar)
+    .then(car => {
+        if (car){
+            res.status(200).json(car)
+        } else {
+            res.status(404).json({message: "cannot find car with that id"})
+        }
+    })
+    .catch(error =>{
+        res.status(500).json({message: error.message })
+    })
+})
+
 module.exports = router
